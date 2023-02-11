@@ -1,10 +1,18 @@
+import * as React from 'react';
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from './page.module.css'
+import Head from 'next/head';
+import { AppProps } from 'next/app';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { CacheProvider, EmotionCache } from '@emotion/react';
+import theme from '../config/theme';
+import createEmotionCache from '../config/createEmotionCache';
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+/*export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.description}>
@@ -88,4 +96,27 @@ export default function Home() {
       </div>
     </main>
   )
+}*/
+
+// Client-side cache, shared for the whole session of the user in the browser.
+const clientSideEmotionCache = createEmotionCache();
+
+interface MyAppProps extends AppProps {
+  emotionCache?: EmotionCache;
+}
+
+export default function Home(props: MyAppProps) {
+  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+  return (
+      <CacheProvider value={emotionCache}>
+        <Head>
+          <meta name="viewport" content="initial-scale=1, width=device-width" />
+        </Head>
+        <ThemeProvider theme={theme}>
+          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </CacheProvider>
+  );
 }
