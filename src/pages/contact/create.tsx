@@ -4,21 +4,19 @@ import {Button, Grid, Typography, Divider as MuiDivider, Paper, TextField} from 
 import Link from 'next/link';
 import { styled } from "@mui/material/styles";
 import {spacing} from "@mui/system";
-import { useForm, Controller } from 'react-hook-form';
+import { useForm, Controller, Control } from 'react-hook-form';
+import InputForm from "@/components/contact/inputForm";
 
 const Divider = styled(MuiDivider)(spacing);
 export default function Create(props: AppProps) {
     const { register, handleSubmit, control } = useForm({
-        defaultValues: {
-            "contact_code": ""
-        },
+        defaultValues: {},
     });
 
     const onSubmit = (data: any) => {
         console.log(data);
     };
 
-    // @ts-ignore
     return (
         <React.Fragment>
             <div className="page-header">
@@ -38,36 +36,18 @@ export default function Create(props: AppProps) {
             <div className="form-area">
                 <Paper className="paper">
                     <form autoComplete='off' className="root" onSubmit={handleSubmit(onSubmit)}>
-                        <Grid item xs={10}>
-                            <Grid container spacing={4} className="gridMargin">
-                                <Grid item xs={3} className="textField">
-                                    <Controller
-                                        control={control}
-                                        name="contact_code"
-                                        defaultValue=""
-                                        render={({ field }) => (
-                                            <TextField
-                                                {...field}
-                                                variant="outlined"
-                                                fullWidth
-                                                InputLabelProps={{shrink: true}}
-                                                size="small"
-                                                label="Contact code"
-                                            />
-                                        )}
-                                    />
-                                </Grid>
-                            </Grid>
-                            <Grid container spacing={4}>
-                                <Grid item xs={12} className="registButton">
-                                    <Button
-                                        type={"submit"}
-                                        variant="contained"
-                                        color="primary"
-                                        className={"buttonOrange"}>
-                                        Save
-                                    </Button>
-                                </Grid>
+                        <InputForm
+                            control={control}
+                        />
+                        <Grid container spacing={4}>
+                            <Grid item xs={12} className="registButton">
+                                <Button
+                                    type={"submit"}
+                                    variant="contained"
+                                    color="primary"
+                                    className={"buttonOrange"}>
+                                    Save
+                                </Button>
                             </Grid>
                         </Grid>
                     </form>
