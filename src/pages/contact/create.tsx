@@ -9,7 +9,15 @@ import InputForm from "@/components/contact/inputForm";
 
 const Divider = styled(MuiDivider)(spacing);
 export default function Create(props: AppProps) {
-    const { register, handleSubmit, control } = useForm({
+    const {
+        register,
+        handleSubmit,
+        control,
+        setValue,
+        getValues,
+        setError,
+        formState: { errors }
+    } = useForm({
         defaultValues: {},
     });
 
@@ -38,6 +46,11 @@ export default function Create(props: AppProps) {
                     <form autoComplete='off' className="root" onSubmit={handleSubmit(onSubmit)}>
                         <InputForm
                             control={control}
+                            register={register}
+                            setValue={setValue}
+                            getValues={getValues}
+                            errors={errors}
+                            setError={setError}
                         />
                         <Grid container spacing={4}>
                             <Grid item xs={12} className="registButton">
