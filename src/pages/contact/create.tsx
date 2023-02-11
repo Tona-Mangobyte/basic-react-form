@@ -52,6 +52,7 @@ export default function Create(props: AppProps) {
                             errors={errors}
                             setError={setError}
                         />
+                        <Divider my={2} />
                         <Grid container spacing={4}>
                             <Grid item xs={12} className="registButton">
                                 <Button

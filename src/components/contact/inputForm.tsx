@@ -13,7 +13,7 @@ import {
 
 interface InputFormContactProp {
     control: Control<FieldValues, any>
-    register: UseFormRegister<any>
+    register: UseFormRegister<{}>
     setValue: UseFormSetValue<{}>
     getValues: UseFormGetValues<{}>
     errors: FieldErrors<FieldValues>
@@ -53,7 +53,7 @@ export default function InputForm(props: InputFormContactProp) {
                             name="contact_name"
                             defaultValue=""
                             rules={{ required: true }}
-                            render={({ field: { ref, onChange, ...field } }) => (
+                            render={({ field }) => (
                                 <TextField
                                     {...field}
                                     variant="outlined"
