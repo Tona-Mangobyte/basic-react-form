@@ -6,6 +6,7 @@ import { styled } from "@mui/material/styles";
 import {spacing} from "@mui/system";
 import { useForm, Controller, Control } from 'react-hook-form';
 import InputForm from "@/components/contact/inputForm";
+import InputFormComp from "@/components/contact/inputForm2";
 
 const Divider = styled(MuiDivider)(spacing);
 export default function Create(props: AppProps) {
@@ -44,7 +45,7 @@ export default function Create(props: AppProps) {
             <div className="form-area">
                 <Paper className="paper">
                     <form autoComplete='off' className="root" onSubmit={handleSubmit(onSubmit)}>
-                        <InputForm
+                        <InputFormComp
                             control={control}
                             register={register}
                             setValue={setValue}
