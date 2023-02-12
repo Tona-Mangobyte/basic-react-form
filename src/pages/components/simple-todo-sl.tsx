@@ -5,7 +5,7 @@ import TodosStateLess from "@/components/common/todo.stateless";
 import CounterSl from "@/components/common/counter-sl";
 
 const SimpleTodoSl = () => {
-    const { register, setValue, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, setValue, handleSubmit, formState: { errors } } = useForm();
     const [count, setCount] = React.useState(0);
     const [todos, setTodos] = React.useState([]);
 
