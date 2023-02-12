@@ -9,14 +9,15 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import {Button, Grid} from "@mui/material";
 import StudentRow from "@/components/student/StudentRow";
+import {Gender} from "@/interfaces/student.interface";
 
 export default class Student extends React.Component<any, any> {
     constructor(props: AppProps) {
         super(props);
         this.state = {
             students: [
-                { id: 1, name: "Student1", gender: "Male", address: "PP" },
-                { id: 2, name: "Student2", gender: "Female", address: "PV" },
+                { id: 1, name: "Student1", gender: Gender.Male, address: "PP" },
+                { id: 2, name: "Student2", gender: Gender.Female, address: "PV" },
             ],
         };
         this.handlerNewRow = this.handlerNewRow.bind(this);

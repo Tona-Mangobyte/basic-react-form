@@ -2,7 +2,7 @@ import * as React from "react";
 import {AppProps} from "next/app";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
-import {StudentInterface} from "@/interfaces/student.interface";
+import {Gender, StudentInterface} from "@/interfaces/student.interface";
 
 interface StudentRowProps extends AppProps {
     record: StudentInterface
@@ -42,14 +42,17 @@ export default class StudentRow extends React.Component<any, any> {
                     />
                 </TableCell>
                 <TableCell>
-                    <input
-                        type="text"
+                    <select
                         name="gender"
                         value={this.state.record.gender}
                         onChange={ (event: any) => {
                             this.handleChange('gender', event.target.value)
                         }}
-                    />
+                    >
+                        <option value="">Select...</option>
+                        <option value={Gender.Male}>Male</option>
+                        <option value={Gender.Female}>Female</option>
+                    </select>
                 </TableCell>
                 <TableCell>
                     <input
