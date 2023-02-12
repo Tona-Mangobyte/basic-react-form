@@ -15,7 +15,7 @@ interface SimpleData {
     carbs: number
     protein: number
 }
-export default class SimpleTable extends React.Component {
+export default class SimpleTable extends React.Component<any, any> {
 
     constructor(props: AppProps) {
         super(props);
