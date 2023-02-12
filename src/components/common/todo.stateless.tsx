@@ -1,4 +1,3 @@
-import { memo } from "react";
 import * as React from "react";
 
 const TodosStateLess = ({ todos, add, remove }: any) => {
@@ -29,4 +28,4 @@ const TodosStateLess = ({ todos, add, remove }: any) => {
     );
 };
 
-export default memo(TodosStateLess);
+export default React.memo(TodosStateLess);
