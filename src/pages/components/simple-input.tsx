@@ -6,7 +6,7 @@ export default class SimpleInput1 extends React.Component<any, any> {
     constructor(props: AppProps) {
         super(props);
         this.state = {
-            input: "Hello World!"
+            input: ""
         }
         this.handleChange = this.handleChange.bind(this)
     }
