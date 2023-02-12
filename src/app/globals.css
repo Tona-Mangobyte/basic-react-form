@@ -105,3 +105,26 @@ a {
     color-scheme: dark;
   }
 }
+.form-area{
+  margin-top: 8px;
+}
+
+.buttonRight, .textRight{
+  text-align: right;
+}
+
+.buttonRight button:not(.helpTooltip){
+  margin-left: 8px;
+}
+
+.buttonRight.bottomMargin button {
+  margin-bottom: 2px;
+}
+
+.registButton {
+  text-align: right;
+}
+
+.registButton button{
+  margin: 8px 0 0;
+}
