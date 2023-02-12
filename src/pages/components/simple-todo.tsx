@@ -41,7 +41,7 @@ export default class SimpleTodo extends React.Component<any, any> {
     render() {
         return (
             <>
-                <Todo todos={this.state.todos} addTodo={this.addTodo} removeTodo={this.removeTodo} />
+                <Todo todos={this.state.todos} add={this.addTodo} remove={this.removeTodo} />
                 <hr />
                 <div>
                     Count: {this.state.count}

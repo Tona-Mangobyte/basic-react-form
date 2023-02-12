@@ -4,13 +4,13 @@ import { useForm } from "react-hook-form";
 
 interface TodoProps extends AppProps {
     todos: any
-    addTodo: any
-    // removeTodo: Function
+    add: Function
+    remove: Function
 }
 export default class Todo extends React.Component<any, any> {
     // const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-    constructor(props: any) {
+    constructor(props: TodoProps) {
         super(props);
         this.state = {
             todo: ''
@@ -31,7 +31,7 @@ export default class Todo extends React.Component<any, any> {
                 {
                     this.props.todos.map((todo: any, index: number) => {
                     return <p key={index}>{todo} <button onClick={(event: any) => {
-                        this.props.removeTodo(todo)
+                        this.props.remove(todo)
                     }}>x</button> </p>;
                 })}
                 <input
@@ -43,7 +43,7 @@ export default class Todo extends React.Component<any, any> {
                     }}
                 />
                 <button onClick={(event: any) => {
-                    this.props.addTodo(this.state.todo);
+                    this.props.add(this.state.todo);
                 }
                 }>Add New</button>
             </>
