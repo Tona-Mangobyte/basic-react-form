@@ -1,11 +1,11 @@
 import * as React from "react";
 
-const TodosStateLess = ({ todos, add, remove }: any) => {
-    const [input, setInput] = React.useState("");
+const TodosStateLess = ({ todos, add, remove, register, errors, handleSubmit, setValue }: any) => {
 
-    const handleChange = (value: string) => {
-        setInput(value);
-    }
+    const onSubmit = (data: any) => {
+        add(data.name);
+        setValue('name', '', { shouldDirty: true })
+    };
     return (
         <>
             <h2>My Todos</h2>
@@ -14,16 +14,18 @@ const TodosStateLess = ({ todos, add, remove }: any) => {
                     remove(todo);
                 }}>x</button></p>;
             })}
-            <input
-                type="text"
-                name="name"
-                onChange={ (event: any) => {
-                    handleChange(event.target.value)
-                }}
-            />
-            <button onClick={() => {
-                add(input);
-            }}>Add Todo</button>
+            <form autoComplete='off' className="root" onSubmit={handleSubmit(onSubmit)}>
+                <input
+                    {...register("name", { required: true, maxLength: 20 })}
+                    type="text"
+                />
+                <button type={"submit"}>Add Todo</button>
+                <br/>
+                {
+                    errors.name && (
+                        <span style={{ color: "red" }} role="alert"> required</span>)
+                }
+            </form>
         </>
     );
 };
